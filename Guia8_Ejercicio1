@@ -1,0 +1,49 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+#include <vector>
+#include <cmath>
+#include <math.h>
+#include <cstdlib>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char** argv) {
+	int c;
+	int n;
+	int numeros[5];
+	float p;
+	float m;
+	
+	try{
+		cout<<"Ingrese la cantidad de datos: ";
+		cin>>c;
+		if(c>1) numeros[c];
+		else throw 404;
+	}
+	catch(int e){
+		cout<<"La cantidad de datos debe ser mayor a 1. Por defecto solo se podran ingresar 5 datos.";
+	}
+	
+	for(int i=0;i<c;i++){
+		cout<<"Ingrese el "<<i+1<<" numero: ";
+		cin>>n;
+		while(n<=0){
+			cout<<"Solo pueden ingresarse valores postivos. Ingrese nuevamente el numero: ";
+			cin>>n;
+		}
+		numeros[i]=n;
+		p+=n;
+	}
+	
+	//promedio
+	p=p/c;
+	for(int i=0;i<c;i++){
+		m+=pow(numeros[i]-p,2);
+	}
+	m=sqrt(m/c);
+	cout<<"El promedio de los numeros es: "<<p<<endl;
+	cout<<"La desviacion tipica de los numeros es: "<<m<<endl;
+	system("PAUSE");
+	return 0;
+}
