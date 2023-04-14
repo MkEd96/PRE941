@@ -1,3 +1,12 @@
+#include <vcl.h>
+#include <windows.h>
+
+#pragma hdrstop
+#pragma argsused
+
+#include <tchar.h>
+
+#include <stdio.h>
 #include <iostream>
 using namespace std;
 #include <stdlib.h>
@@ -6,18 +15,18 @@ using namespace std;
 #include <cstdlib>
 #include <vector>
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 //Funcion para ordenar un vector
-void ordenamientoBurbuja();
+void ordenamientoBurbuja(int n[], int cantidad);
 
-int main(int argc, char** argv) {
+int _tmain(int argc, _TCHAR* argv[])
+{
 	srand(time(NULL));
 	int n;
-	int c;
-	int lista[5];
-	
-	
+	int c = 5;
+	int lista[c];
+
+
 	try{
 		printf("Indique la canditdad de datos a generar: ");
 		cin>>c;
@@ -37,20 +46,21 @@ int main(int argc, char** argv) {
 	{
 		printf("Cantidad de datos no valida\t");
 	}
-	
-	system("PAUSE");
+
+	getch();
 	return 0;
 }
 
 void ordenamientoBurbuja(int n[], int cantidad){
 	int temp;
-	for(int i=0;i<cantidad;i++){
-		for(int j=i+1;j<j<cantidad;j++){
-			if(n[i]>n[j]){
-				temp = n[j];
-				n[i]=n[j];
-				n[j]=temp;
+	for(int i=0; i<cantidad;i++){
+		for(int j=0; j<cantidad; j++){
+			if(n[j]>n[j+1]){
+			   temp = n[j];
+			   n[j]=n[j+1];
+			   n[j+1]=temp;
 			}
 		}
 	}
-};
+}
+
