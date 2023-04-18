@@ -1,0 +1,89 @@
+#include <iostream>
+using namespace std;
+#include <conio.h>
+#include <stdlib.h>
+#include <stdio.h>
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+#define CAT 5
+#define PRO 5
+
+int main(int argc, char** argv) {
+	char categorias[CAT][20];	
+	char nombres[CAT*PRO][50]{
+		"*", "*", "*", "*", "*",
+		"*", "*", "*", "*", "*",
+		"*", "*", "*", "*", "*",
+		"*", "*", "*", "*", "*", 
+		"*", "*", "*", "*", "*",
+	};
+	float precios[CAT][PRO]={
+		{0,0,0,0,0},
+		{0,0,0,0,0},
+		{0,0,0,0,0},
+		{0,0,0,0,0},
+		{0,0,0,0,0}
+	};
+	int op=0, id;
+	
+	do{
+		cout<<"\t\tEjercicio 1"<<endl;
+		cout<<"Opciones disponibles"<<endl;
+		cout<<"1. Agregar categoria (maximo 5)"<<endl;
+		cout<<"2. Agregar producto a una categoria (maximo 5)"<<endl;
+		cout<<"3. Ver lista de productos"<<endl;
+		cout<<"4. Salir";
+		cout<<endl;
+		cout<<"Ingrese la accion a realizar: ";
+		cin>>op;
+		
+		switch(op){
+			case 1: 
+				for(int i=0;i<CAT;i++){
+					cout<<"Ingrese la "<<(i+1)<<" categoria: ";
+					cin>>categorias[i];
+				}
+				cout<<endl;
+				cout<<"Categorias agregadas..."<<endl;
+				op=0;
+				break;
+			case 2:
+				for(int i=0; i<CAT; i++) cout<<(i+1)<<". "<<categorias[i]<<"\n";
+				cout<<"Seleccione la categoria: ";
+				cin>>id;
+				cout<<"Agregando productos a la categoria: "<<categorias[id-1]<<endl;
+				for(int i=0;i<PRO;i++){
+					cout<<"Ingrese el "<<(i+1)<<" producto: ";
+					cin>>nombres[(id-1)*PRO+i];
+					cout<<endl;
+					cout<<"Ingrese el precio: ";
+					cin>>precios[id-1][i];
+					cout<<endl;
+				}
+				cout<<"Productos ingresados correctamente...";
+				op=0;
+				break;
+			case 3:
+				for(int i=0; i<CAT;i++) cout<<(i+1)<<". "<<categorias[i]<<"\n";
+				cout<<"Seleccione la categoria: ";
+				cin>>id;
+				cout<<endl;
+				cout<<"Productos: "<<endl;
+				for(int i=0;i<PRO;i++){
+					cout<<(i+1)<<". "<<nombres[(id-1)*PRO+i]<<" $"<<precios[id-1][i]<<endl;
+				}
+				op=0;
+				break;
+			default: 
+				op=1;
+		}
+	}while(op==0);
+	
+	if(op=1){
+		cout<<"Fin del programa..."<<endl;
+	}
+	
+	
+	getch();
+	return 0;
+}
