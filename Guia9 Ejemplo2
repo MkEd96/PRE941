@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+#include <conio.h>
+#include <stdlib.h>
+#include <stdio.h>
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+#define CAT 4
+#define PRO 3
+
+int main(int argc, char** argv) {
+	char categorias[CAT][20]={"Lamparas","Escolares","Herramientas","PC"};
+	
+	char nombres[CAT*PRO][50]={
+		"de cristal","de plastico","de barro",
+		"Cuaderno","Bolson","Lapices de Colores",
+		"Martillo","Serrucho","Taladro"
+		"HP","BenQ","Toshiba"
+	};
+	
+	float precios[CAT][PRO]={
+		{20,15,18},
+		{1.5,16.4,3.0},
+		{34,26,45},
+		{280,300,800}
+	};
+	
+	int j,idcate,op1;
+	
+	cout<<"\t\tEmulacion de base de datos\n\n";
+	cout<<"\nLista de categorias de Productos\n";
+	for(j=0;j<CAT;j++) cout<<(j+1)<<"-"<<categorias[j]<<"\n";
+	cout<<"\nDigite numero del tipo deproducto a comprar: ";
+	cin>>idcate;
+	
+	switch(idcate){
+		case 1: cout<<"\n\nProductos de categoria: "<<categorias[idcate-1]<<"\n";
+		
+		for(j=0;j<PRO;j++) cout<<(j+1)<<"."<<nombres[(idcate-1)*PRO+j]<<"\t$"<<precios[idcate-1][j]<<endl; //Contador de 1 a 3
+		cout<<"\n";
+		break;
+		
+		case 2: cout<<"\n\nProductos de categoria: "<<categorias[idcate-1]<<"\n";
+		
+		for(j=0;j<PRO;j++) cout<<(j+1)<<"-"<<nombres[(idcate-1)*PRO+j]<<"\t$"<<precios[idcate-1][j]<<endl; //contador de 4 a 6
+		cout<<"\n";
+		break;
+		
+		case 3: cout<<"\n\nProductos de categoria: "<<categorias[idcate-1]<<"\n";
+		for(j=0;j<PRO;j++) cout<<(j+1)<<"."<<nombres[(idcate-1)*PRO+j]<<"\t$"<<precios[idcate-1][j]<<endl; //Contador de 7 a 9
+		break;
+		
+		case 4: cout<<"\n\nProductos de categoria: "<<categorias[idcate-1]<<"\n";
+		for(j=0;j<PRO;j++) cout<<(j+1)<<" marca "<<nombres[(idcate-1)*PRO+j]<<"\t$"<<precios[idcate-1][j]<<endl; //Contador de 10 a 12
+		break;
+		
+		default: idcate=0;
+	}
+	if(idcate!=0){
+		cout<<"Su opcion es?\t";
+		cin>>op1;
+		
+		cout<<"\Precio de "<<nombres[(idcate-1)*PRO+(op1-1)]<<" es de $"<<precios[idcate-1][op1-1]<<"\n\n";
+		}
+	else cout<<"Error!! Opcion invalida\n\n";
+	cout<<"Fin del Programa..\n\n";
+	
+	getch();
+	return 0;
+}
