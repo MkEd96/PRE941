@@ -1,0 +1,97 @@
+#include <iostream>
+using namespace std;
+#include<conio.h>
+#include<stdlib.h>
+#include<stdio.h>
+#include <vector>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char** argv) {
+	int cantidad, op=0, posicion;
+	char nombres[cantidad][50];
+	double planilla[cantidad+1][5];
+	double sueldo;
+	string n, temp;
+	
+	do{
+		cout<<"1. Ingresar nueva lista de empleados."<<endl;
+		cout<<"2. Ver informe de un empleado."<<endl;
+		cout<<"3. Ver planilla de empleados."<<endl;
+		cout<<"4. Salir"<<endl;
+		cout<<"Ingrese la acción a realizar: "<<endl;
+		cin>>op;
+		
+		switch(op){
+			case 1: 
+				cout<<"Ingrese la cantidad de empleados: ";
+				cin>>cantidad;
+				cout<<endl;
+
+				//Llenado de la planilla
+				for(int i=0;i<cantidad;i++){
+					cout<<"Ingrese el nombre del empleado "<<(i+1)<<": ";
+					cin>>nombres[i];
+					cout<<"Ingrese el sueldo base: ";
+					cin>>sueldo;
+					cout<<endl;
+					planilla[i][0]=i+1;
+					planilla[i][1]=sueldo;		//Sueldo base
+					planilla[i][2]=sueldo*0.10; //Renta
+					planilla[i][3]=sueldo*0.035; //ISSS
+					planilla[i][4]=sueldo-(planilla[i][2]+planilla[i][3]); //Sueldo final
+				}
+
+				//Calculo de totales en la plantilla
+				for(int i=1;i<5;i++){
+					for(int j=0;j<cantidad;j++){
+						planilla[cantidad+1][i]=planilla[j][i];
+					}
+				}
+				cout<<endl;
+				cout<<"Usuarios ingresados correctamente..."
+				op==0;
+				break;
+				
+			case 2: 
+				cout<<"Ingrese el nombre del empleado: ";
+				cin>>n;
+				//Evalua si el nombre existe en la matriz almacenando los valores de una fila en una variable temporal
+				if (n.size()<cantidad){
+					for(int i=0;i<cantidad;i++){
+						temp+=nombres[i];
+						if(n==temp) posicion=i;
+						else{
+							posicion=0;
+							op==0;
+							temp="";
+						}
+					}
+					if(posicion!=0) cout<<planilla[posicion][0]<<". "<<nombres[posicion]<<"Sueldo base: $"<<planilla[posicion][1]<<" Sueldo neto: $"planilla[posicion][4];
+					else{
+						cout<<"El usuario no esta registrado..."<<endl;
+						op=0;
+					}
+				}
+				op=0;
+				cout<<endl;
+				break;
+			case 3:
+				cout<<"Empleado\t\t\t Sueldo\t\t\t Descuento de renta\t\tDescuento de ISSS\t\t\t Sueldo final"<<endl;;
+				for(int i=0;i<cantidad;i++){
+					cout<<planilla[i][0]<<". "<<nombres[i]<<"\t\t\t "<<planilla[i][1]<<"\t\t\t "<<planilla[i][2]<<"\t\t\t\t "<<planilla[i][3]<<"\t\t\t\t "<<planilla[i][4]<<endl;
+				}
+				cout<<"Total\t\t\t \t\t\t"<<planilla[cantidad][1]<<"\t\t\t"<<planilla[cantidad][2]<<"\t\t\t"<<planilla[cantidad][3]<<"\t\t\t"<<planilla[cantidad][4]<<endl;
+				op=0;
+				break;
+			default: 
+				op=1;
+				cout<<endl;
+				break;	
+		}
+	}while(op==0);
+	if(op==1) cout<<"Fin del programa..."<<endl;
+
+	getch();
+	return 0;
+}
