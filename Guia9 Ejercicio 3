@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+#include<conio.h>
+#include<stdlib.h>
+#include<stdio.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char** argv) {
+	string municipios[3]{"Sensuntepeque","Cinquera","San Isidro"};
+	float puntos[4][5];
+	float totales[4];
+	int poblacion, temp, p;
+	
+	//Ingreso de datos
+	for(int i=0;i<4;i++){
+		for(int j=0;j<3;j++){
+			cout<<"Ingrese la cantidad de puntos del partido "<<(i+1)<<"en el municipio de "<<municipios[j]<<": ";
+			cin>>puntos[i][j];
+			//Calculo del total de votos
+			puntos[i][3]+=puntos[i][j];
+			totales[i]+=puntos[i][j];
+		}
+	}
+
+	//Calculo de la poblacion y porcentajes
+	for(int i=0;i<4;i++){
+		poblacion+=puntos[i][3];
+	}
+	for(int i=0;i<4;i++){
+			puntos[i][4]=(puntos[i][3]/poblacion)*100;
+	}
+	
+	cout<<"Poblacion: "<<poblacion<<endl;
+	cout<<"Partido\t\t\t"<<municipios[0]<<"\t\t"<<municipios[1]<<"\t"<<municipios[2]<<"\tTotal de puntos\t\tPorcentaje"<<endl;
+	for(int i=0;i<4;i++){
+			cout<<(i+1)<<". \t\t\t"<<puntos[i][0]<<"\t\t\t"<<puntos[i][1]<<"\t\t"<<puntos[i][2]<<"\t\t"<<puntos[i][3]<<"\t\t\t"<<puntos[i][4]<<"%"<<endl;
+	}
+	
+	//Ganador
+	for(int i=0;i<4;i++){
+		for(int j=0;j<4;j++){
+			if(totales[j]<totales[i+1]){
+				temp=totales[i];
+				totales[i]=totales[j];
+				totales[j]=temp;	
+				}
+			}
+		}
+		cout<<endl;
+	
+	for(int i=0;i<4;i++){
+		if(puntos[i][3]==totales[0]) p=i;
+		else p=5;
+	}
+	if(p==5)cout<<"Que hiciste we?"<<endl;
+	
+	cout<<"El partido ganador fue el "<<(p+1)<<" con un total de: "<<totales[0]<<" puntos."<<endl;
+	
+	getch();
+	return 0;
+}
