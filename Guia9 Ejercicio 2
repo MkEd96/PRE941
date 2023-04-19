@@ -5,18 +5,17 @@ using namespace std;
 #include<stdio.h>
 #include <vector>
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
-int main(int argc, char** argv) {
+int _tmain(int argc, _TCHAR* argv[])
+{
 	int cantidad;
 	char nombres[cantidad][50];
 	double planilla[cantidad+1][5];
 	double sueldo;
-	
+
 	cout<<"Ingrese la cantidad de empleados: ";
 	cin>>cantidad;
 	cout<<endl;
-	
+
 	//Llenado de la planilla
 	for(int i=0;i<cantidad;i++){
 		cout<<"Ingrese el nombre del empleado "<<(i+1)<<": ";
@@ -30,7 +29,7 @@ int main(int argc, char** argv) {
 		planilla[i][3]=sueldo*0.035; //ISSS
 		planilla[i][4]=sueldo-(planilla[i][2]+planilla[i][3]); //Sueldo final
 	}
-	
+
 	//Calculo de totales en la plantilla
 	for(int i=1;i<5;i++){
 		for(int j=0;j<cantidad;j++){
@@ -38,14 +37,12 @@ int main(int argc, char** argv) {
 		}
 	}
 	cout<<endl;
-	cout<<"Empleado\t\t\t Sueldo\t\t\t Descuento de renta\t\t\t Descuento de ISSS\t\t\t Sueldo final";
+	cout<<"Empleado\t\t\t Sueldo\t\t\t Descuento de renta\t\tDescuento de ISSS\t\t\t Sueldo final"<<endl;;
 	for(int i=0;i<cantidad;i++){
-		for(int j=0;j<5;j++){
-			cout<<planilla[i][0]<<". "<<nombres[i]<<"\t\t\t "<<planilla[i][1]<<"\t\t\t "<<planilla[i][2]<<"\t\t\t "<<planilla[i][3]<<"\t\t\t "<<planilla[i][4]<<endl;
-		}
+		cout<<planilla[i][0]<<". "<<nombres[i]<<"\t\t\t "<<planilla[i][1]<<"\t\t\t "<<planilla[i][2]<<"\t\t\t\t "<<planilla[i][3]<<"\t\t\t\t "<<planilla[i][4]<<endl;
 	}
-	
-	
+
+
 	getch();
 	return 0;
 }
