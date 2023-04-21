@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+#include<conio.h>
+
+void SolicitarNumeros(void);
+void RestarNumeros(int a, int b);
+void DividirNumeros(int a, int b);
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	cout<<"Prog. para calculo de Resta y Division de 2 numeros\n";
+	SolicitarNumeros();
+	getch();
+	return 0;
+}
+
+void SolicitarNumeros(void){
+	int n1,n2;
+	cout<<"\nDigite 2 numeros cualquiera:\n";
+	cin>>n1>>n2;
+	RestarNumeros(n1,n2);
+	DividirNumeros(n1,n2);
+}
+
+void RestarNumeros(int a, int b){
+	int r;
+	r=a-b;
+	cout<<"\nResta de "<<a<<" y "<<b<<" es "<<r;
+}
+
+void DividirNumeros(int a, int b){
+	float d;
+	if(b!=0){
+		d=(float) a/ (float) b;
+		cout<<"\nCociente de "<<a<<" y "<<b<<" es igual a "<<d;
+	}else
+		cout<<"\Error, division por cero";
+}
