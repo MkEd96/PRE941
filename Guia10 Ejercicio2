@@ -1,0 +1,95 @@
+#include <iostream>
+#include <stdlib.h> //permite usar system(cls) para limpiar pantalla
+#include <conio.h>
+#include <math.h>
+using namespace std;
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+void AreaTriangulo();
+void AreaRombo();
+void VolCubo();
+
+int main(int argc, char** argv) {
+	int control = 0, op;
+	
+	do{
+		cout<<"Escoja la accion a realizar: "<<endl;
+		cout<<"1. Area de un triangulo equilatero."<<endl;
+		cout<<"2. Area de un rombo (Basado en su daigonal mayor y menor)"<<endl;
+		cout<<"3. Volumen de un cubo."<<endl;
+		cout<<"4. Salir."<<endl;
+		cin>>op;
+		
+		switch(op){
+			case 1: 
+				AreaTriangulo();
+				system("CLS");
+				control=0;
+			break;
+			case 2:
+				AreaRombo();
+				system("CLS");
+				control=0;
+			break;
+			case 3:
+				VolCubo();
+				system("CLS");
+				control=0;
+			break;
+			default: control = 1;
+		}
+		
+	}while(control==0);
+	
+	if(control==1) cout<<"Fin del programa...";
+	
+	getch();
+	return 0;
+}
+
+void AreaTriangulo(){
+	float b, h, A;
+	
+	system("CLS"); //Limpia la pantalla
+	cout<<"Ingrese la base del triangulo: ";
+	cin>>b;
+	cout<<endl;
+	cout<<"Ingrese la altura del triangulo: ";
+	cin>>h;
+	cout<<endl;
+	
+	A=(b*h)/2;
+	
+	cout<<"El area del triangulo es: "<<A<<endl;
+	getch();
+}
+
+void AreaRombo(){
+	float a, b, r;
+	
+	system("CLS");
+	cout<<"Ingrese la diagonal menor: ";
+	cin>> a;
+	cout<<endl;
+	cout<<"Ingrese la diagonal mayor: ";
+	cin>>b;
+	cout<<endl;
+	
+	r=(a*b)/2;
+	
+	cout<<"El area del rombo es: "<<r<<endl;
+	getch();
+}
+
+void VolCubo(){
+	double l,A;
+	
+	system("CLS");
+	cout<<"Ingrese la medida de los lados: ";
+	cin>>l;
+	cout<<endl;
+	A=pow(l,3);
+	cout<<"El area del cubo es: "<<A<<endl;
+	getch();
+}
