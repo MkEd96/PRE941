@@ -1,0 +1,49 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+#include <conio.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+void Primos(int n);
+
+int main(int argc, char** argv) {
+	int n;
+	
+	cout<<"Ingrese el rango maximo de numeros: ";
+	cin>>n;
+	cout<<endl;
+	Primos(n);
+	
+	getch();
+	return 0;
+}
+
+void Primos(int n){
+	int j=1,r,i=1;
+	bool primo=true;
+	
+	while(i<=n){
+		if(j<10){
+			if(j!=i){
+			 r=i%j;
+			 if(r==0) {
+			 	primo=false;
+			 	j++;
+			 }
+			 j++;
+			}
+			else j++;
+		} 
+		if(j==10){
+			if(primo==true){
+			cout<<"El numero: "<<i<<" es primo "<<endl;
+			j=1;
+			i++;
+			primo=false;
+			}
+			j=1;
+			i++;
+		}
+	}
+}
