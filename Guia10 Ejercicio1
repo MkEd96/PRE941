@@ -2,14 +2,14 @@
 using namespace std;
 #include<stdlib.h>
 #include<conio.h>
+#include<math.h>
 
 void SolicitarNumeros(void);
 void RestarNumeros(int a, int b);
 void DividirNumeros(int a, int b);
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	cout<<"Prog. para calculo de Resta y Division de 2 numeros\n";
+int main(int argc, char** argv) {
+	cout<<"Prog. para calculo de Resta, Division de 2 numeros, potenciacion y combinacion\n";
 	SolicitarNumeros();
 	getch();
 	return 0;
@@ -22,6 +22,14 @@ void SolicitarNumeros(void){
 	RestarNumeros(n1,n2);
 	DividirNumeros(n1,n2);
 }
+
+void Potenciacion(int a, int b){
+	int r;
+	r= sqrt(a,b);
+	cout<<"\nEl resultado de la potenciacion de "<<a<<" a "<<b<<" es: "<<r;
+}
+
+
 
 void RestarNumeros(int a, int b){
 	int r;
