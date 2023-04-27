@@ -196,7 +196,7 @@ do{
                 
                 for(int i=0;i<n;i++){
                 	for(int j=0;j<n;j++){
-                		if(promedios[j]>promedios[j+1]){
+                		if(promedios[j]<promedios[j+1]){
                 			temp=promedios[j];
                 			TempNombre = nombres[j];
                 			nombres[j]=nombres[j+1];
