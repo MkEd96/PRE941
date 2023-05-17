@@ -1,3 +1,13 @@
+//#include <vcl.h>
+#include <windows.h>
+
+#pragma hdrstop
+#pragma argsused
+
+#include <tchar.h>
+
+#include <stdio.h>
+
 #include <iostream>
 #include <map>
 #include <iomanip>
@@ -7,7 +17,7 @@
 class InfoClass {
 
     public:
-    enum class Alignment { LEFT, RIGHT }; 
+    enum class Alignment { LEFT, RIGHT };
     typedef std::vector< std::string > Row;
     InfoClass( char horizontal = '-', char vertical = '|', char corner = '+' ) :
         _horizontal( horizontal ),
@@ -44,7 +54,7 @@ class InfoClass {
     void addRow( Iterator begin, Iterator end )
     {
         for( auto i = begin; i != end; ++i ) {
-           add( * i ); 
+           add( * i );
         }
         endOfRow();
     }
